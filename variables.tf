@@ -94,4 +94,16 @@ variable "vpc_name" {
  type = string
 }
 
+variable "ec2_role"{
+ description = "elastic beanstalk ec2 role"
+ default = "aws-elasticbeanstalk-ec2-role"
+}
+
+variable "ebs_role" {
+ description = "elastic beanstalk iam role"
+ default = "aws-elasticbeanstalk-service-role"
+}
+
+
+
 

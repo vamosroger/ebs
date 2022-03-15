@@ -70,5 +70,5 @@ data "aws_acm_certificate" "issued" {
 }
 
 data "aws_iam_role" "ebssvcrole" {
-  name = "aws-elasticbeanstalk-service-role"
+  name = var.ebs_role
 }

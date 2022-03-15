@@ -91,7 +91,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
-    value     =  "aws-elasticbeanstalk-ec2-role"
+    value     =  var.ec2_role
   }
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
@@ -248,46 +248,6 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
     name      = "StreamLogs" 
     value     = "true"
   }
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "DBAllocatedStorage" 
-#    value     = "MySQL:${var.DBStorage}"
-#  }
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "DBDeletionPolicy" 
-#    value     = var.DBdeletionPolicy
-#  }  
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "DBEngine" 
-#    value     = "mysql"
-#  }
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "DBEngineVersion" 
-#    value     = "8.0.27"
-#  }
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "DBInstanceClass" 
-#    value     = var.DBInstance_Type
-#  }
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "DBUser" 
-#    value     = var.DBUser
-#  }
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "DBPassword" 
-#    value     = var.DBPassword
-#  }
-#  setting {
-#    namespace = "aws:rds:dbinstsance"
-#    name      = "MultiAZDatabase" 
-#    value     = "true"
-#  }
 
   tags = {
       Application = var.appname
