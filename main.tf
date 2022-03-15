@@ -124,7 +124,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBScheme"
-    value     = "internet facing"
+    value     = var.ELBScheme
   }
   setting {
     namespace = "aws:elasticbeanstalk:environment:process:default"

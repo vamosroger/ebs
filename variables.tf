@@ -1,9 +1,3 @@
-/*
-variable "vpc_id" {
-  description = "VPC ID"  
-}
-*/
-
 variable "public_subnets" {
   description = "List public subnet id"
   type = list
@@ -19,12 +13,9 @@ variable "database_subnets" {
   type = list
 }
 
-
 variable "elasticappname" {
   description = "Name of the application"
 }
-
-
 
 variable "beanstalkappenv" {
   description = "Name of the Elastic Beanstalk Environment"
@@ -40,6 +31,7 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+/*
 variable "DBStorage" {
   description = "Database storage size"
   default     = 10
@@ -64,6 +56,7 @@ variable "DBInstance_Type" {
   description = "Database RDS Instance Type"
   default = "db.t2.micro"
 }
+*/
 
 variable "lbLogBucket" {
   description = "S3 Bucket for Load Balancer logs"
@@ -73,17 +66,8 @@ variable "SSLPolicy" {
   description = "SSL Policy for the Application Load Balancer port 443"
 }
 
-#variable "SSLCert" {
-#  description = "SSL Certificate for the Load balancer port 443"
-#}
-
-variable "dbname" {
- description = "Database Instance Name"
- default = "servicebroker"
-}
-
 variable "environment" {
-  description = "Service Broker environment"
+  description = "Elastic Beanstalk environment"
 }
 
 variable "secrets_arn" {
@@ -100,32 +84,14 @@ variable "certdomain"{
 
 }
 
+variable "ELBScheme" {
+ description = "Specify the ELB Scheme if internal or internet facing, valid values are public or internal"
+ default = "public"
+}
+
 variable "vpc_name" {
-
+ description = "The tag:name value of the VPC"
+ type = string
 }
 
-/*
-variable "subnet_public_1" {
-   
-}
 
-variable "subnet_public_2" {
-  
-}
-
-variable "subnet_private_1"{
-  
-}
-
-variable "subnet_private_2" {
-
-}
-
-variable "subnet_rds_1" {
-
-}
-
-variable "subnet_rds_2" {
- 
-}
-*/
