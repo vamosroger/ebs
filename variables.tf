@@ -105,7 +105,7 @@ variable "ebs_role" {
 }
 
 
-variabel "deployment_policy" {
+variable "deployment_policy" {
   description = "Deployment Policy Setting, valid input Time,Health,Immutable"
   default = "Health"
 }
