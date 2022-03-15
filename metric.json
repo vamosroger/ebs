@@ -1,0 +1,35 @@
+{
+"CloudWatchMetrics":
+  {
+  "Environment":
+	{
+		  "InstancesSevere":60,
+		  "ApplicationRequests2xx":60,
+		  "ApplicationRequests3xx":60,
+		  "ApplicationRequests4xx":60,
+		  "ApplicationRequests5xx":60,
+		  "ApplicationRequestsTotal":60,
+		  "InstancesDegraded":60,
+		  "InstancesInfo":60,
+		  "InstancesOk":60,
+		  "InstancesPending":60,
+		  "InstancesUnknown":60,
+		  "InstancesWarning":60,
+	},
+  "Instance":
+	{
+		  "CPUUser": 60,
+		  "CPUSystem": 60,
+		  "LoadAverage1min":60,
+		  "LoadAverage5min":60,
+		  "ApplicationRequests2xx":60,
+		  "ApplicationRequests3xx":60,
+		  "ApplicationRequests4xx":60,
+		  "ApplicationRequests5xx":60,
+		  "ApplicationRequestsTotal":60,
+		  "InstanceHealth":60
+
+	}
+  },
+"Version":1
+}
