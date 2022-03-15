@@ -110,7 +110,7 @@ variable "deployment_policy" {
   default = "Health"
 }
 
-variabel "rolling_update" {
+variable "rolling_update" {
   description = "Deployment Policy Setting, valid input AllAtOnce,Rolling,RollingWithAdditionalBatch,Immutable,TrafficSplitting"
   default = "Rolling"
 }
