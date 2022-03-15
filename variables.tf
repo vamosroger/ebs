@@ -105,12 +105,12 @@ variable "ebs_role" {
 }
 
 
-variable "deployment_policy" {
-  description = "Deployment Policy Setting, valid input Time,Health,Immutable"
+variable "rolling_update" {
+  description = "Rolling Update Policy Setting, valid input Time,Health,Immutable"
   default = "Health"
 }
 
-variable "rolling_update" {
+variable "deployment_policy" {
   description = "Deployment Policy Setting, valid input AllAtOnce,Rolling,RollingWithAdditionalBatch,Immutable,TrafficSplitting"
   default = "Rolling"
 }
