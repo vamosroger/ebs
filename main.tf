@@ -150,12 +150,12 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
   setting {
     namespace = "aws:autoscaling:asg"
     name      = "MinSize"
-    value     = 2
+    value     = var.min_instance
   }
   setting {
     namespace = "aws:autoscaling:asg"
     name      = "MaxSize"
-    value     = 3
+    value     = var.max_instance
   }
   setting {
     namespace = "aws:elasticbeanstalk:healthreporting:system"
@@ -188,9 +188,14 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
     value     = "true"
   }
   setting {
+    namespace = "aws:elasticbeanstalk:command"
+    name      = "DeploymentPolicy" 
+    value     = var.deployment_policy
+  }
+  setting {
     namespace = "aws:autoscaling:updatepolicy:rollingupdate"
     name      = "RollingUpdateType" 
-    value     = "Immutable"
+    value     = var.rolling_update
   }
   setting {
     namespace = "aws:autoscaling:updatepolicy:rollingupdate"

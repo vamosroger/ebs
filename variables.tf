@@ -105,5 +105,22 @@ variable "ebs_role" {
 }
 
 
+variabel "deployment_policy" {
+  description = "Deployment Policy Setting, valid input Time,Health,Immutable"
+  default = "Health"
+}
 
+variabel "rolling_update" {
+  description = "Deployment Policy Setting, valid input AllAtOnce,Rolling,RollingWithAdditionalBatch,Immutable,TrafficSplitting"
+  default = "Rolling"
+}
 
+variable "min_instance" {
+  description = "Minimum EC2 Instance in Autoscaling"
+  default = 2
+}
+
+variable "max_instance" {
+ description = "Maximum EC2 Instance in Autoscaling"
+ default = 3
+}
