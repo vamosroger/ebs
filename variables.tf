@@ -44,7 +44,7 @@ variable "environment" {
   description = "Elastic Beanstalk environment"
 }
 
-variable "secrets_arn" {
+variable "secrets_name" {
  description = "ARN of Secret in Secrets Manager"
 }
 
