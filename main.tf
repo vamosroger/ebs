@@ -28,7 +28,7 @@ resource "aws_security_group_rule" "elb_oub_https" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = data.aws_vpc.vpc.cidr_block
   security_group_id = aws_security_group.elb_sg.id	
 }
 
@@ -37,7 +37,7 @@ resource "aws_security_group_rule" "elb_oub_http" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = data.aws_vpc.vpc.cidr_block
   security_group_id = aws_security_group.elb_sg.id	
 }
 
@@ -55,18 +55,10 @@ resource "aws_security_group_rule" "ec2_oub_https" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = data.aws_vpc.vpc.cidr_block
   security_group_id = aws_security_group.ec2_sg.id
 }
 
-#resource "aws_security_group_rule" "ec2_oub_http" {
-#  type              = "egress"
-#  from_port         = 80
-#  to_port           = 80
-#  protocol          = "tcp"
-#  cidr_blocks       = ["0.0.0.0/0"]
-#  security_group_id = aws_security_group.ec2_sg.id
-#}
 
 # Create elastic beanstalk application
 
@@ -245,7 +237,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "AwsSecretsManagerSettings__ARN" 
-    value     = var.secrets_arn
+    value     = data.aws_secretsmanager_secret.name.arn
   }
 
   setting {

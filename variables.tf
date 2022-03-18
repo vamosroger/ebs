@@ -1,4 +1,4 @@
-variable "public_subnets" {
+variable "elb_subnets" {
   description = "List public subnet id"
   type = list
 }
@@ -31,32 +31,6 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-/*
-variable "DBStorage" {
-  description = "Database storage size"
-  default     = 10
-}
-
-variable "DBdeletionPolicy" {
-  description = "Specifies whether to reatin,delete, or create a snapshot of the DB when terminated"
-  default     = "Delete"
-}
-
-variable "DBPassword" {
-  description = "Database Password"
-  default = "Password321"
-}
-
-variable "DBUser" { 
-  description = "Database Username"
-  default = "dbuser"
-}
-
-variable "DBInstance_Type" {
-  description = "Database RDS Instance Type"
-  default = "db.t2.micro"
-}
-*/
 
 variable "lbLogBucket" {
   description = "S3 Bucket for Load Balancer logs"
