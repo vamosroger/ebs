@@ -1,19 +1,40 @@
-# Create Security Group 
+### Create Security Group 
 
 resource "aws_security_group" "elb_sg" {
   name = "EBS Load Balancer SG"
   description = "EBS Load Balancer Security Group"
   vpc_id = data.aws_vpc.vpc.id 
+  
+  tags = {
+     Name = "ebs-lb-sg"
+  }
 }
 
 resource "aws_security_group" "ec2_sg" {
   name = "EBS EC2 SG"
   description = "EBS EC2 Security Group"
-  vpc_id = data.aws_vpc.vpc.id 
+  vpc_id = data.aws_vpc.vpc.id
+  
+  tags = {
+     Name = "ebs-ec2-sg"
+  }  
 }
 
-# Security Group Inbound and Outbound Rules
+resource "aws_security_group" "rds_sg" {
+  name = "RDS Security Group"
+  description = "RDS Security Group"
+  vpc_id = data.aws_vpc.vpc.id
 
+  tags = {
+      Name = "ebs-rds-sg"
+  }  
+}
+
+
+
+### Security Group Inbound and Outbound Rules
+
+## ELASTIC LOAD BALANCER
 resource "aws_security_group_rule" "elb_inb_https" {
   type              = "ingress"
   from_port         = 443
@@ -41,6 +62,7 @@ resource "aws_security_group_rule" "elb_oub_http" {
   security_group_id = aws_security_group.elb_sg.id	
 }
 
+## EC2 
 resource "aws_security_group_rule" "ec2_inb_https" {
   type              = "ingress"
   from_port         = 443
@@ -60,20 +82,34 @@ resource "aws_security_group_rule" "ec2_oub_https" {
 }
 
 
-# Create elastic beanstalk application
+##RDS
+resource "aws_security_group_rule" "rds_inb" {
+  type                     = "ingress"
+  from_port                = 3306
+  to_port                  = 3306
+  protocol                 = "tcp"
+  source_security_group_id = aws_security_group.ec2_sg.id
+  security_group_id        = aws_security_group.rds_sg.id	
+}
+
+
+
+### ELASTIC BEANSTALK ENVIRONMENT
+
+## Create elastic beanstalk application
 
 
 resource "aws_elastic_beanstalk_application" "elasticapp" {
   name                = var.elasticappname
 }
 
-# Create elastic beanstalk Environment
+## Create elastic beanstalk Environment
 
 resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
   name                = var.beanstalkappenv
   application         = aws_elastic_beanstalk_application.elasticapp.name
   solution_stack_name = var.solution_stack_name
-  #tier                = var.tier
+
 
   setting {
     namespace = "aws:ec2:vpc"
