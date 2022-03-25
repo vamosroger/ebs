@@ -102,3 +102,8 @@ variable "max_instance" {
 variable "crowdstrike_id" {
   description = "The ID for the crowdstrike"
 }
+
+variable "metric_file_name" {
+  description = "JSON file for the elastic beanstalk enhanced health reporting"
+  default = "${path.module}/metric.json"
+}

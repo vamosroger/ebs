@@ -193,7 +193,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
   setting {
     namespace = "aws:elasticbeanstalk:healthreporting:system"
     name      = "ConfigDocument"
-    value     = file("${path.module}/metric.json")
+    value     = file(var.metric_file_name)
   }
   setting {
     namespace = "aws:elasticbeanstalk:managedactions"
