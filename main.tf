@@ -230,11 +230,11 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
     name      = "RollingUpdateEnabled" 
     value     = "true"
   }
-  #setting {
-  #  namespace = "aws:elasticbeanstalk:command"
-  #  name      = "DeploymentPolicy" 
-  #  value     = "Immutable"
-  #}
+  setting {
+    namespace = "aws:elbv2:listener:default"
+    name      = "ListenerEnabled" 
+    value     = "false"
+  }
   setting {
     namespace = "aws:elbv2:loadbalancer"
     name      = "AccessLogsS3Enabled" 
