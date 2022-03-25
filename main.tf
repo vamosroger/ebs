@@ -277,6 +277,11 @@ resource "aws_elastic_beanstalk_environment" "beanstalkappenv" {
   }
 
   setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "crowdstrike__cid" 
+    value     = var.crowdstrike_id
+
+setting {
     namespace = "aws:elasticbeanstalk:cloudwatch:logs"
     name      = "StreamLogs" 
     value     = "true"

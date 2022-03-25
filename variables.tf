@@ -98,3 +98,7 @@ variable "max_instance" {
  description = "Maximum EC2 Instance in Autoscaling"
  default = 3
 }
+
+variable "crowdstrike_id" {
+  description = "The ID for the crowdstrike"
+}
